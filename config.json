@@ -1,0 +1,35 @@
+{
+  "plugins" {
+    "reconnect": { "enabled": true },
+    "afkActions": { "enabled": true }
+  },
+  "utils": {
+    "patrolExplore": {
+      "enabled": true,
+      "patrolPoints": [[0,64,0],[10,64,10]],
+      "exploreRadiusMin": 80,
+      "exploreRadiusMax": 120,
+      "speedMultiplier": 0.6
+    },
+    "avoidDanger": {
+      "enabled": true,
+      "dangerBlocks": ["lava","cactus","fire","water"],
+      "hostileMobs": ["creeper","zombie","skeleton"]
+    },
+    "autoFollow": {
+      "enabled": true,
+      "followRange": 15,
+      "unfollowRange": 20
+    },
+    "afkActions": {
+      "enabled": true,
+      "minDelay": 10000,
+      "maxDelay": 30000,
+      "move": { "enabled": true, "minDuration": 500, "maxDuration": 1200 },
+      "jump": { "enabled": true, "minDuration": 200, "maxDuration": 800 },
+      "sneak": { "enabled": true, "minDuration": 500, "maxDuration": 1500 },
+      "swingHand": { "enabled": true, "minSwings": 1, "maxSwings": 3 },
+      "look": { "enabled": true }
+    }
+  }
+}

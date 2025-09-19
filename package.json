@@ -1,0 +1,27 @@
+{
+  "name": "minecraft-bot-v2.8",
+  "version": "2.8.0",
+  "description": "Minecraft Bot V2.8 with AFK+Reconnect, AutoChat+GPT4All v4, Movement System, Auto-Avoid Danger, and Logger (with emoji support)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mineflayer": "^4.16.0",
+    "mineflayer-pathfinder": "^1.6.1",
+    "minecraft-data": "^3.69.0",
+    "chalk": "^4.1.2",
+    "vec3": "^0.1.7",
+    "gpt4all": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "author": "Uttam Sahu",
+  "license": "MIT"
+}

@@ -1,0 +1,12 @@
+{
+  "bot-account": {
+    "username": "NAV2.9",
+    "password": "",
+    "type": "mojang"
+  },
+  "server": {
+    "ip": "MCBCN.aternos.me",
+    "port": 14709,
+    "version": "1.12.1"
+  }
+}

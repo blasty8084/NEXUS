@@ -1,0 +1,64 @@
+# .replit config
+entrypoint = "index.js"
+language = "nodejs"
+modules = ["nodejs-22"]
+hidden = [".config", "package-lock.json", "node_modules"]
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix", "package.json", "package-lock.json"]
+
+[nix]
+channel = "stable-24_11"
+
+[deployment]
+run = ["node", "index.js"]
+deploymentTarget = "autoscale"
+ignorePorts = false
+
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[env]
+PORT = "3000"
+
+[packager]
+language = "nodejs"
+
+[packager.features]
+packageSearch = true
+guessImports = true
+
+[unitTest]
+language = "nodejs"
+
+[agent]
+expertMode = true
+
+# --- Automatic npm, dependency, and audit fixer ---
+run = "bash"
+onBoot = """
+# 1. Update npm globally to 11.6.0
+npm install -g npm@11.6.0 && echo "✅ npm updated to $(npm -v)"
+
+# 2. Clean old modules and lock file
+rm -rf node_modules package-lock.json
+
+# 3. Install all dependencies fresh
+npm install && npm update
+echo "✅ All packages installed and updated"
+
+# 4. Automatically fix vulnerabilities
+npm audit fix --force || true
+echo "✅ Vulnerabilities auto-fixed (if possible)"
+
+# 5. Optional: aliases to switch npm versions
+npm install npm@10.9.2 --no-save || true
+alias npm10='npx npm@10.9.2'
+alias npm11='npx npm@11.6.0'
+
+# 6. Show Node & npm versions at startup
+echo "Node version: $(node -v)"
+echo "npm 10 version: $(npx npm@10.9.2 -v)"
+echo "npm 11 version: $(npx npm@11.6.0 -v)"
+"""
